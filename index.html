@@ -43,7 +43,6 @@
     --accent-light:#e8f0ea;
     --border:      rgba(26, 24, 20, 0.11);
     --shadow:      rgba(26, 24, 20, 0.06);
-    --sidebar-w:   270px;
     --serif:       'EB Garamond', Georgia, serif;
     --sans:        'Outfit', system-ui, sans-serif;
     --mono:        'DM Mono', monospace;
@@ -80,36 +79,32 @@
      LAYOUT
   ───────────────────────────────────────────── */
   .page-wrap {
-    display: flex;
-    min-height: 100vh;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.8rem;
   }
 
   /* ─────────────────────────────────────────────
-     SIDEBAR
+     HEADER / PROFILE
   ───────────────────────────────────────────── */
-  .sidebar {
-    width: var(--sidebar-w);
-    flex-shrink: 0;
-    background: var(--bg2);
-    border-right: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-    padding: 2rem 1.4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  .site-header {
+    padding: 2.8rem 0 2.2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
   }
 
-  /* ── Profile ── */
+  .profile-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
   .profile-photo-wrap {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     border-radius: 6px;
     overflow: hidden;
     border: 1px solid var(--border);
-    margin-bottom: 0.8rem;
     flex-shrink: 0;
   }
 
@@ -120,30 +115,37 @@
     object-position: center top;
   }
 
+  .profile-info { flex: 1; min-width: 0; }
+
+  .profile-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.5rem;
+  }
+
   .profile-badge {
-    width: 48px;
+    width: 40px;
     height: auto;
     display: block;
-    margin-bottom: 0.9rem;
     filter: drop-shadow(0 1px 3px rgba(0,0,0,.12));
   }
 
   .profile-name {
     font-family: var(--serif);
-    font-size: 1.45rem;
+    font-size: 1.9rem;
     font-weight: 400;
     line-height: 1.15;
-    margin-bottom: 4px;
   }
 
   .profile-role {
-    font-size: 12.5px;
+    font-size: 13px;
     color: var(--muted);
     margin-bottom: 2px;
   }
 
   .profile-inst {
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--accent);
     margin-bottom: 4px;
@@ -153,38 +155,26 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 11.5px;
+    font-size: 12px;
     color: var(--muted);
     font-family: var(--mono);
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
   }
 
   .profile-loc svg { flex-shrink: 0; }
 
   /* ── Social badges ── */
-  .sidebar-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.6rem;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .social-grid {
+  .social-row {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-bottom: 1.6rem;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   .social-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 9px;
+    gap: 6px;
+    padding: 5px 10px;
     border: 1px solid var(--border);
     border-radius: 4px;
     font-size: 12px;
@@ -193,7 +183,7 @@
     font-family: var(--sans);
     font-weight: 400;
     transition: all 0.15s;
-    background: var(--bg);
+    background: var(--bg2);
   }
 
   .social-btn:hover {
@@ -203,117 +193,23 @@
   }
 
   .social-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     flex-shrink: 0;
   }
 
   .social-btn .sbadge {
-    margin-left: auto;
     font-family: var(--mono);
-    font-size: 9.5px;
+    font-size: 9px;
     color: var(--muted);
     background: var(--bg3);
     padding: 1px 5px;
     border-radius: 2px;
   }
 
-  /* ── Package cards ── */
-  .pkg-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 1rem;
-  }
-
-  .pkg-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 10px;
-    transition: border-color 0.15s, background 0.15s;
-  }
-
-  .pkg-card:hover {
-    border-color: var(--accent2);
-    background: var(--accent-light);
-  }
-
-  .pkg-card-header {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    margin-bottom: 7px;
-  }
-
-  .pkg-logo {
-    width: 44px;
-    height: 44px;
-    object-fit: cover;
-    flex-shrink: 0;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  }
-
-  .pkg-title { min-width: 0; }
-
-  .pkg-name {
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .pkg-version {
-    font-family: var(--mono);
-    font-size: 9.5px;
-    color: var(--muted);
-    margin-top: 1px;
-  }
-
-  .pkg-btns {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-  }
-
-  .pkg-btn {
-    display: inline-block;
-    padding: 2px 7px;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    text-decoration: none;
-    background: var(--bg2);
-    transition: all 0.15s;
-  }
-
-  .pkg-btn:hover {
-    border-color: var(--accent2);
-    color: var(--accent);
-    background: var(--accent-light);
-  }
-
-  .pkg-btn.cran {
-    border-color: rgba(66,133,244,0.35);
-    color: #4285F4;
-  }
-
-  .pkg-btn.doi {
-    border-color: rgba(45,90,61,0.35);
-    color: var(--accent);
-  }
-
   /* ─────────────────────────────────────────────
-     MAIN CONTENT
+     SECTIONS
   ───────────────────────────────────────────── */
-  .main-content {
-    flex: 1;
-    min-width: 0;
-    padding: 3rem 2.5rem 5rem;
-    max-width: 720px;
-  }
-
-  /* ── Section ── */
   .section {
     margin-bottom: 3.5rem;
   }
@@ -375,6 +271,90 @@
     flex-shrink: 0;
   }
 
+  /* ── R Packages ── */
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .pkg-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .pkg-card:hover {
+    border-color: var(--accent2);
+    background: var(--accent-light);
+  }
+
+  .pkg-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .pkg-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    flex-shrink: 0;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .pkg-title { min-width: 0; }
+
+  .pkg-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .pkg-version {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .pkg-btns {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .pkg-btn {
+    display: inline-block;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-decoration: none;
+    background: var(--bg3);
+    transition: all 0.15s;
+  }
+
+  .pkg-btn:hover {
+    border-color: var(--accent2);
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .pkg-btn.cran {
+    border-color: rgba(66,133,244,0.35);
+    color: #4285F4;
+  }
+
+  .pkg-btn.doi {
+    border-color: rgba(45,90,61,0.35);
+    color: var(--accent);
+  }
+
   /* ── Publications ── */
   .pub-item {
     padding: 1.3rem 0;
@@ -387,7 +367,6 @@
 
   .pub-item:first-child { border-top: 1px solid var(--border); }
 
-  /* Cover thumbnail */
   .pub-cover {
     width: 80px;
     height: 108px;
@@ -411,14 +390,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .pub-cover-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    opacity: 0.55;
   }
 
   .pub-num {
@@ -551,39 +522,31 @@
   ───────────────────────────────────────────── */
   footer {
     border-top: 1px solid var(--border);
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem 0 2rem;
     font-size: 11.5px;
     color: var(--muted);
     letter-spacing: 0.02em;
-    margin-left: var(--sidebar-w);
+    max-width: 780px;
+    margin: 0 auto;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
   }
 
   /* ─────────────────────────────────────────────
      RESPONSIVE
   ───────────────────────────────────────────── */
-  @media (max-width: 768px) {
-    .page-wrap { flex-direction: column; }
-
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-      border-right: none;
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem;
-    }
-
+  @media (max-width: 600px) {
+    .profile-row { flex-direction: column; gap: 1.2rem; }
     .profile-photo-wrap { width: 90px; height: 90px; }
+    .profile-name { font-size: 1.5rem; }
 
-    .main-content { padding: 2rem 1.2rem 3rem; max-width: 100%; }
-
-    footer { margin-left: 0; }
+    .pkg-grid { grid-template-columns: 1fr; }
 
     .pub-item { grid-template-columns: 60px 1fr; }
     .pub-cover { width: 60px; height: 80px; }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 400px) {
     .pub-item { grid-template-columns: 1fr; }
     .pub-cover { width: 100%; height: 140px; }
   }
@@ -593,38 +556,27 @@
   ───────────────────────────────────────────── */
   @media (prefers-color-scheme: dark) {
 
-    /* Sidebar com sombra sutil separando do conteúdo */
-    .sidebar {
-      box-shadow: 1px 0 0 var(--border);
-    }
-
-    /* Foto com borda mais visível */
     .profile-photo-wrap {
       border-color: rgba(237, 234, 225, 0.15);
     }
 
-    /* Capas dos papers — leve brilho para não sumir */
     .pub-cover img {
       opacity: 0.88;
       filter: brightness(0.92) contrast(1.04);
     }
 
-    /* Badge hex logo */
     .profile-badge {
       filter: drop-shadow(0 1px 4px rgba(0,0,0,.45));
     }
 
-    /* Cards de interesse — borda mais visível */
-    .itag, .sw-card {
+    .itag {
       background: var(--bg2);
     }
 
-    /* Links de publicação */
     .plink {
       background: var(--bg3);
     }
 
-    /* Scrollbar (Webkit) */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg2); }
     ::-webkit-scrollbar-thumb {
@@ -633,7 +585,6 @@
     }
     ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-    /* Seleção de texto */
     ::selection {
       background: var(--accent-light);
       color: var(--accent2);
@@ -646,150 +597,98 @@
 <div class="page-wrap">
 
 <!-- ══════════════════════════════════════════
-     SIDEBAR
+     HEADER
 ══════════════════════════════════════════ -->
-<aside class="sidebar">
+<header class="site-header">
+  <div class="profile-row">
 
-  <!-- Profile photo -->
-  <div class="profile-photo-wrap">
-    <img src="20200919182018_IMG_2697%20(2).JPG" alt="Hugo Rodrigues">
-  </div>
-
-  <!-- HR hex badge — troca automaticamente com o tema do sistema -->
-  <picture>
-    <source srcset="Logos/Dark.png" media="(prefers-color-scheme: dark)">
-    <img src="Logos/Light.png" alt="HR hex logo" class="profile-badge">
-  </picture>
-
-  <h1 class="profile-name">Hugo Rodrigues</h1>
-  <div class="profile-role">Postdoctoral Associate</div>
-  <div class="profile-inst">University of Florida</div>
-  <div class="profile-loc">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-    </svg>
-    Gainesville, FL · USA
-  </div>
-
-  <!-- ── Social links ── -->
-  <div class="sidebar-label" style="margin-top:.2rem">Networks</div>
-  <div class="social-grid">
-
-    <!-- ORCID -->
-    <a class="social-btn" href="https://orcid.org/0000-0002-8070-8126" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#A6CE39" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0z"/>
-        <path fill="#fff" d="M7.369 4.378a.946.946 0 1 1 0 1.892.946.946 0 0 1 0-1.892zM6.647 7.416h1.444V17.46H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.334-1.563 3.334-3.722s-1.1-3.722-3.431-3.722h-2.2z"/>
-      </svg>
-      ORCID
-      <span class="sbadge">0000-0002-8070-8126</span>
-    </a>
-
-    <!-- Google Scholar -->
-    <a class="social-btn" href="https://scholar.google.com/citations?user=vu-Ka7wAAAAJ&hl=en" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#4285F4" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/>
-      </svg>
-      Google Scholar
-    </a>
-
-    <!-- ResearchGate -->
-    <a class="social-btn" href="https://www.researchgate.net/profile/Hugo-Rodrigues-12" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#00CCBB" d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.485 12.485 0 0 0-.32 2.211 12.493 12.493 0 0 0-.032.921A6.06 6.06 0 0 1 15 7.16l-1.36 1.35C12.388 9.763 11.43 11 11.43 12.5c0 1.501.96 2.737 2.212 3.988A5.998 5.998 0 0 1 15 18.146v.316c0 .727-.115 1.374-.346 1.934-.232.56-.55.993-.952 1.298-.402.305-.858.458-1.368.458h-.218c-.368 0-.689-.098-.96-.295-.27-.197-.487-.505-.65-.923a3.93 3.93 0 0 1-.242-1.407c0-.66.137-1.237.412-1.724.274-.488.644-.858 1.11-1.112l.018-.009L10.77 15.4l-.017.01c-.7.403-1.25 1.006-1.648 1.81a6.17 6.17 0 0 0-.595 2.728c0 .97.196 1.845.588 2.621.392.776.953 1.39 1.683 1.84.73.452 1.598.678 2.602.678 1.053 0 1.968-.264 2.744-.79.776-.527 1.376-1.283 1.797-2.267.42-.985.63-2.148.63-3.49v-.19c0-.87.22-1.658.665-2.362l3.76-5.894H19.71l-2.258 3.588c-.148-.38-.315-.764-.503-1.15a17.81 17.81 0 0 0-.688-1.24l2.258-3.588h1.282l.042-.067a9.028 9.028 0 0 0 1.022-4.08C20.866 2.08 20.404.001 19.586 0zm-5.327 14.006c-.38-.386-.717-.771-1.011-1.153a5.48 5.48 0 0 1-.705-1.354 4.23 4.23 0 0 1-.238-1.405v-.064c.008-.495.114-.932.316-1.31.2-.377.47-.667.807-.87.337-.2.712-.3 1.124-.3.41 0 .79.1 1.133.298.34.2.61.49.808.867.197.377.295.815.295 1.311 0 .5-.098.937-.295 1.311a2.19 2.19 0 0 1-.807.867c-.343.2-.72.298-1.133.298h-.028a2.17 2.17 0 0 1-.266-.496z"/>
-      </svg>
-      ResearchGate
-    </a>
-
-    <!-- GitHub -->
-    <a class="social-btn" href="https://github.com/HugoMachadoRodrigues" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-      </svg>
-      GitHub
-    </a>
-
-    <!-- Twitter / X -->
-    <a class="social-btn" href="https://x.com/Hugo_MRodrigues" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
-      </svg>
-      Twitter / X
-    </a>
-
-    <!-- Publons / Web of Science -->
-    <a class="social-btn" href="https://publons.com/researcher/1443505/hugo-machado-rodrigues/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <rect width="24" height="24" rx="4" fill="#336699"/>
-        <path fill="#fff" d="M4.5 6h3.1L9.8 15l2.3-9h2.3l2.3 9 2.2-9H22l-3.3 12h-2.8l-2.1-8.2L11.7 18H8.9z"/>
-      </svg>
-      Publons
-    </a>
-
-  </div>
-
-  <!-- ── R Packages ── -->
-  <div class="sidebar-label">R Packages</div>
-  <div class="pkg-list">
-
-    <!-- soilVAE -->
-    <div class="pkg-card">
-      <div class="pkg-card-header">
-        <img src="Logos/soilVAE.png" alt="soilVAE hex logo" class="pkg-logo">
-        <div class="pkg-title">
-          <div class="pkg-name">soilVAE</div>
-          <div class="pkg-version">v0.1.2 · R / TensorFlow</div>
-        </div>
-      </div>
-      <div class="pkg-btns">
-        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilVAE" target="_blank" rel="noopener">GitHub</a>
-        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilVAE/" target="_blank" rel="noopener">Docs</a>
-        <a class="pkg-btn cran" href="https://CRAN.R-project.org/package=soilVAE" target="_blank" rel="noopener">CRAN</a>
-        <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.18715456" target="_blank" rel="noopener">DOI</a>
-      </div>
+    <!-- Photo -->
+    <div class="profile-photo-wrap">
+      <img src="20200919182018_IMG_2697%20(2).JPG" alt="Hugo Rodrigues">
     </div>
 
-    <!-- autoSpectra -->
-    <div class="pkg-card">
-      <div class="pkg-card-header">
-        <img src="Logos/autoSpectra.png" alt="autoSpectra hex logo" class="pkg-logo">
-        <div class="pkg-title">
-          <div class="pkg-name">autoSpectra</div>
-          <div class="pkg-version">v0.3.0 · R / Shiny</div>
-        </div>
+    <!-- Info -->
+    <div class="profile-info">
+      <div class="profile-top">
+        <picture>
+          <source srcset="Logos/Dark.png" media="(prefers-color-scheme: dark)">
+          <img src="Logos/Light.png" alt="HR hex logo" class="profile-badge">
+        </picture>
+        <h1 class="profile-name">Hugo Rodrigues</h1>
       </div>
-      <div class="pkg-btns">
-        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/autoSpectra" target="_blank" rel="noopener">GitHub</a>
-        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/autoSpectra/" target="_blank" rel="noopener">Docs</a>
-        <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.19004686" target="_blank" rel="noopener">DOI</a>
+
+      <div class="profile-role">Postdoctoral Associate</div>
+      <div class="profile-inst">University of Florida</div>
+      <div class="profile-loc">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        Gainesville, FL · USA
       </div>
-    </div>
 
-    <!-- soilFlux -->
-    <div class="pkg-card">
-      <div class="pkg-card-header">
-        <img src="Logos/soilFlux.png" alt="soilFlux hex logo" class="pkg-logo">
-        <div class="pkg-title">
-          <div class="pkg-name">soilFlux</div>
-          <div class="pkg-version">v0.1.0 · R / CNN1D</div>
-        </div>
-      </div>
-      <div class="pkg-btns">
-        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilFlux" target="_blank" rel="noopener">GitHub</a>
-        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilFlux/" target="_blank" rel="noopener">Docs</a>
-      </div>
-    </div>
+      <!-- Social links -->
+      <div class="social-row">
 
+        <!-- ORCID -->
+        <a class="social-btn" href="https://orcid.org/0000-0002-8070-8126" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#A6CE39" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0z"/>
+            <path fill="#fff" d="M7.369 4.378a.946.946 0 1 1 0 1.892.946.946 0 0 1 0-1.892zM6.647 7.416h1.444V17.46H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.334-1.563 3.334-3.722s-1.1-3.722-3.431-3.722h-2.2z"/>
+          </svg>
+          ORCID
+          <span class="sbadge">0000-0002-8070-8126</span>
+        </a>
 
-  </div>
+        <!-- Google Scholar -->
+        <a class="social-btn" href="https://scholar.google.com/citations?user=vu-Ka7wAAAAJ&hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#4285F4" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/>
+          </svg>
+          Google Scholar
+        </a>
 
-</aside><!-- /sidebar -->
+        <!-- ResearchGate -->
+        <a class="social-btn" href="https://www.researchgate.net/profile/Hugo-Rodrigues-12" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#00CCBB" d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.485 12.485 0 0 0-.32 2.211 12.493 12.493 0 0 0-.032.921A6.06 6.06 0 0 1 15 7.16l-1.36 1.35C12.388 9.763 11.43 11 11.43 12.5c0 1.501.96 2.737 2.212 3.988A5.998 5.998 0 0 1 15 18.146v.316c0 .727-.115 1.374-.346 1.934-.232.56-.55.993-.952 1.298-.402.305-.858.458-1.368.458h-.218c-.368 0-.689-.098-.96-.295-.27-.197-.487-.505-.65-.923a3.93 3.93 0 0 1-.242-1.407c0-.66.137-1.237.412-1.724.274-.488.644-.858 1.11-1.112l.018-.009L10.77 15.4l-.017.01c-.7.403-1.25 1.006-1.648 1.81a6.17 6.17 0 0 0-.595 2.728c0 .97.196 1.845.588 2.621.392.776.953 1.39 1.683 1.84.73.452 1.598.678 2.602.678 1.053 0 1.968-.264 2.744-.79.776-.527 1.376-1.283 1.797-2.267.42-.985.63-2.148.63-3.49v-.19c0-.87.22-1.658.665-2.362l3.76-5.894H19.71l-2.258 3.588c-.148-.38-.315-.764-.503-1.15a17.81 17.81 0 0 0-.688-1.24l2.258-3.588h1.282l.042-.067a9.028 9.028 0 0 0 1.022-4.08C20.866 2.08 20.404.001 19.586 0zm-5.327 14.006c-.38-.386-.717-.771-1.011-1.153a5.48 5.48 0 0 1-.705-1.354 4.23 4.23 0 0 1-.238-1.405v-.064c.008-.495.114-.932.316-1.31.2-.377.47-.667.807-.87.337-.2.712-.3 1.124-.3.41 0 .79.1 1.133.298.34.2.61.49.808.867.197.377.295.815.295 1.311 0 .5-.098.937-.295 1.311a2.19 2.19 0 0 1-.807.867c-.343.2-.72.298-1.133.298h-.028a2.17 2.17 0 0 1-.266-.496z"/>
+          </svg>
+          ResearchGate
+        </a>
+
+        <!-- GitHub -->
+        <a class="social-btn" href="https://github.com/HugoMachadoRodrigues" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          GitHub
+        </a>
+
+        <!-- Twitter / X -->
+        <a class="social-btn" href="https://x.com/Hugo_MRodrigues" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+          </svg>
+          Twitter / X
+        </a>
+
+        <!-- Publons / Web of Science -->
+        <a class="social-btn" href="https://publons.com/researcher/1443505/hugo-machado-rodrigues/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="24" rx="4" fill="#336699"/>
+            <path fill="#fff" d="M4.5 6h3.1L9.8 15l2.3-9h2.3l2.3 9 2.2-9H22l-3.3 12h-2.8l-2.1-8.2L11.7 18H8.9z"/>
+          </svg>
+          Publons
+        </a>
+
+      </div><!-- /social-row -->
+    </div><!-- /profile-info -->
+  </div><!-- /profile-row -->
+</header>
 
 
 <!-- ══════════════════════════════════════════
      MAIN CONTENT
 ══════════════════════════════════════════ -->
-<main class="main-content">
 
   <!-- ── ABOUT ── -->
   <section class="section" id="about">
@@ -867,6 +766,63 @@
           </svg>
         </div>
         Automated spectral resampling (autoRA)
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── R PACKAGES ── -->
+  <section class="section" id="packages">
+    <div class="section-title">R Packages</div>
+
+    <div class="pkg-grid">
+
+      <!-- soilVAE -->
+      <div class="pkg-card">
+        <div class="pkg-card-header">
+          <img src="Logos/soilVAE.png" alt="soilVAE hex logo" class="pkg-logo">
+          <div class="pkg-title">
+            <div class="pkg-name">soilVAE</div>
+            <div class="pkg-version">v0.1.2 · R / TensorFlow</div>
+          </div>
+        </div>
+        <div class="pkg-btns">
+          <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilVAE" target="_blank" rel="noopener">GitHub</a>
+          <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilVAE/" target="_blank" rel="noopener">Docs</a>
+          <a class="pkg-btn cran" href="https://CRAN.R-project.org/package=soilVAE" target="_blank" rel="noopener">CRAN</a>
+          <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.18715456" target="_blank" rel="noopener">DOI</a>
+        </div>
+      </div>
+
+      <!-- autoSpectra -->
+      <div class="pkg-card">
+        <div class="pkg-card-header">
+          <img src="Logos/autoSpectra.png" alt="autoSpectra hex logo" class="pkg-logo">
+          <div class="pkg-title">
+            <div class="pkg-name">autoSpectra</div>
+            <div class="pkg-version">v0.3.0 · R / Shiny</div>
+          </div>
+        </div>
+        <div class="pkg-btns">
+          <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/autoSpectra" target="_blank" rel="noopener">GitHub</a>
+          <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/autoSpectra/" target="_blank" rel="noopener">Docs</a>
+          <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.19004686" target="_blank" rel="noopener">DOI</a>
+        </div>
+      </div>
+
+      <!-- soilFlux -->
+      <div class="pkg-card">
+        <div class="pkg-card-header">
+          <img src="Logos/soilFlux.png" alt="soilFlux hex logo" class="pkg-logo">
+          <div class="pkg-title">
+            <div class="pkg-name">soilFlux</div>
+            <div class="pkg-version">v0.1.0 · R / CNN1D</div>
+          </div>
+        </div>
+        <div class="pkg-btns">
+          <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilFlux" target="_blank" rel="noopener">GitHub</a>
+          <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilFlux/" target="_blank" rel="noopener">Docs</a>
+        </div>
       </div>
 
     </div>
@@ -1051,7 +1007,6 @@
     </div>
   </section>
 
-</main><!-- /main-content -->
 </div><!-- /page-wrap -->
 
 <footer>
