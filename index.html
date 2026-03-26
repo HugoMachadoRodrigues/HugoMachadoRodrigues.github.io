@@ -218,74 +218,89 @@
     border-radius: 2px;
   }
 
-  /* ── Package entries ── */
+  /* ── Package cards ── */
   .pkg-list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 1rem;
   }
 
-  .pkg-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 9px;
+  .pkg-card {
+    background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 5px;
-    text-decoration: none;
-    color: var(--text);
-    background: var(--bg);
-    transition: all 0.15s;
+    padding: 10px;
+    transition: border-color 0.15s, background 0.15s;
   }
 
-  .pkg-row:hover {
+  .pkg-card:hover {
     border-color: var(--accent2);
     background: var(--accent-light);
   }
 
-  /* CSS hexagonal sticker */
-  .pkg-hex {
-    width: 38px;
-    height: 38px;
-    flex-shrink: 0;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  .pkg-card-header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 0;
-    line-height: 1;
+    gap: 9px;
+    margin-bottom: 7px;
   }
 
-  /* Package logo image (when available) */
-  .pkg-hex img {
-    width: 100%;
-    height: 100%;
+  .pkg-logo {
+    width: 44px;
+    height: 44px;
     object-fit: cover;
-    clip-path: inherit;
+    flex-shrink: 0;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
-  .pkg-info { min-width: 0; }
+  .pkg-title { min-width: 0; }
 
   .pkg-name {
     font-size: 13px;
     font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
-  .pkg-tech {
+  .pkg-version {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .pkg-btns {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .pkg-btn {
+    display: inline-block;
+    padding: 2px 7px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
     font-family: var(--mono);
     font-size: 10px;
     color: var(--muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-decoration: none;
+    background: var(--bg2);
+    transition: all 0.15s;
+  }
+
+  .pkg-btn:hover {
+    border-color: var(--accent2);
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .pkg-btn.cran {
+    border-color: rgba(66,133,244,0.35);
+    color: #4285F4;
+  }
+
+  .pkg-btn.doi {
+    border-color: rgba(45,90,61,0.35);
+    color: var(--accent);
   }
 
   /* ─────────────────────────────────────────────
@@ -718,31 +733,52 @@
   <div class="pkg-list">
 
     <!-- soilVAE -->
-    <a class="pkg-row" href="https://github.com/HugoMachadoRodrigues/soilVAE" target="_blank" rel="noopener">
-      <div class="pkg-hex" style="background:#2d5a3d">sV</div>
-      <div class="pkg-info">
-        <div class="pkg-name">soilVAE</div>
-        <div class="pkg-tech">R · TensorFlow · VAE</div>
+    <div class="pkg-card">
+      <div class="pkg-card-header">
+        <img src="Logos/soilVAE.png" alt="soilVAE hex logo" class="pkg-logo">
+        <div class="pkg-title">
+          <div class="pkg-name">soilVAE</div>
+          <div class="pkg-version">v0.1.2 · R / TensorFlow</div>
+        </div>
       </div>
-    </a>
+      <div class="pkg-btns">
+        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilVAE" target="_blank" rel="noopener">GitHub</a>
+        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilVAE/" target="_blank" rel="noopener">Docs</a>
+        <a class="pkg-btn cran" href="https://CRAN.R-project.org/package=soilVAE" target="_blank" rel="noopener">CRAN</a>
+        <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.18715456" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
 
     <!-- autoSpectra -->
-    <a class="pkg-row" href="https://github.com/HugoMachadoRodrigues/autoSpectra" target="_blank" rel="noopener">
-      <div class="pkg-hex" style="background:#3a7050">aS</div>
-      <div class="pkg-info">
-        <div class="pkg-name">autoSpectra</div>
-        <div class="pkg-tech">R · Shiny · v0.3.0</div>
+    <div class="pkg-card">
+      <div class="pkg-card-header">
+        <img src="Logos/autoSpectra.png" alt="autoSpectra hex logo" class="pkg-logo">
+        <div class="pkg-title">
+          <div class="pkg-name">autoSpectra</div>
+          <div class="pkg-version">v0.3.0 · R / Shiny</div>
+        </div>
       </div>
-    </a>
+      <div class="pkg-btns">
+        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/autoSpectra" target="_blank" rel="noopener">GitHub</a>
+        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/autoSpectra/" target="_blank" rel="noopener">Docs</a>
+        <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.19004686" target="_blank" rel="noopener">DOI</a>
+      </div>
+    </div>
 
     <!-- soilFlux -->
-    <a class="pkg-row" href="https://github.com/HugoMachadoRodrigues/soilFlux" target="_blank" rel="noopener">
-      <div class="pkg-hex" style="background:#4a7c6a">sF</div>
-      <div class="pkg-info">
-        <div class="pkg-name">soilFlux</div>
-        <div class="pkg-tech">R · CNN1D</div>
+    <div class="pkg-card">
+      <div class="pkg-card-header">
+        <img src="Logos/soilFlux.png" alt="soilFlux hex logo" class="pkg-logo">
+        <div class="pkg-title">
+          <div class="pkg-name">soilFlux</div>
+          <div class="pkg-version">v0.1.0 · R / CNN1D</div>
+        </div>
       </div>
-    </a>
+      <div class="pkg-btns">
+        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilFlux" target="_blank" rel="noopener">GitHub</a>
+        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilFlux/" target="_blank" rel="noopener">Docs</a>
+      </div>
+    </div>
 
 
   </div>
@@ -843,19 +879,18 @@
     <!-- 01 -->
     <div class="pub-item">
       <div class="pub-cover">
-        <img src="covers/cover_01_autoRA.png" alt="autoRA manuscript cover">
+        <img src="covers/cover_01_autoRA_frontiers.png" alt="AutoRA Frontiers in Soil Science cover">
       </div>
       <div>
         <div class="pub-num">01</div>
-        <div class="pub-title">autoRA: an automated spectral resampling algorithm for soil property prediction in Vis–NIR spectroscopy</div>
+        <div class="pub-title">AutoRA: an automated and open-source pipeline for spectral resampling of soil Vis–NIR reflectance data</div>
         <div class="pub-authors"><strong>Rodrigues H</strong>, Grunwald S</div>
         <div class="pub-meta">
-          <span class="pub-journal">Manuscript submitted</span>
-          <span class="pub-year">2024–2025</span>
+          <span class="pub-journal">Frontiers in Soil Science</span>
+          <span class="pub-year">2025</span>
         </div>
         <div class="pub-links">
-          <span class="plink">Under review</span>
-          <span class="plink">Patent · BR 10 2025 025785 8 · INPI / UFRRJ</span>
+          <a class="plink" href="https://doi.org/10.3389/fsoil.2025.1557566" target="_blank" rel="noopener">DOI</a>
         </div>
       </div>
     </div>
@@ -863,19 +898,18 @@
     <!-- 02 -->
     <div class="pub-item">
       <div class="pub-cover">
-        <img src="covers/cover_02_soilVAE.png" alt="soilVAE manuscript cover">
+        <img src="covers/cover_02_autoRA_land.png" alt="autoRA Land cover">
       </div>
       <div>
         <div class="pub-num">02</div>
-        <div class="pub-title">soilVAE: supervised variational autoencoder for soil property prediction from Vis–NIR–SWIR spectroscopy</div>
-        <div class="pub-authors"><strong>Rodrigues H</strong> et al.</div>
+        <div class="pub-title">autoRA: an R package for automated spectral resampling of soil reflectance data across sensor configurations</div>
+        <div class="pub-authors"><strong>Rodrigues H</strong>, Grunwald S</div>
         <div class="pub-meta">
-          <span class="pub-journal">SoftwareX · in preparation</span>
+          <span class="pub-journal">Land · 14(3):604</span>
           <span class="pub-year">2025</span>
         </div>
         <div class="pub-links">
-          <a class="plink" href="https://github.com/HugoMachadoRodrigues/soilVAE" target="_blank" rel="noopener">GitHub</a>
-          <a class="plink" href="https://doi.org/10.5281/zenodo.18715456" target="_blank" rel="noopener">Zenodo · DOI</a>
+          <a class="plink" href="https://doi.org/10.3390/land14030604" target="_blank" rel="noopener">DOI</a>
         </div>
       </div>
     </div>
@@ -883,20 +917,18 @@
     <!-- 03 -->
     <div class="pub-item">
       <div class="pub-cover">
-        <img src="covers/cover_03_autoSpectra.png" alt="autoSpectra manuscript cover">
+        <img src="covers/cover_03_agriengineering.png" alt="AgriEngineering 2023 cover">
       </div>
       <div>
         <div class="pub-num">03</div>
-        <div class="pub-title">autoSpectra: soil spectral modelling, visualization and prediction using OSSL v1.2 and soilVAE asymmetric autoencoders</div>
-        <div class="pub-authors"><strong>Rodrigues H</strong></div>
+        <div class="pub-title">Mapping soil organic carbon and clay using remote sensing and kriging in a subtropical watershed</div>
+        <div class="pub-authors"><strong>Rodrigues H</strong> et al.</div>
         <div class="pub-meta">
-          <span class="pub-journal">Software · v0.3.0</span>
-          <span class="pub-year">2026</span>
+          <span class="pub-journal">AgriEngineering</span>
+          <span class="pub-year">2023</span>
         </div>
         <div class="pub-links">
-          <a class="plink" href="https://github.com/HugoMachadoRodrigues/autoSpectra" target="_blank" rel="noopener">GitHub</a>
-          <a class="plink" href="https://doi.org/10.5281/zenodo.19004686" target="_blank" rel="noopener">Zenodo · DOI</a>
-          <a class="plink" href="https://HugoMachadoRodrigues.github.io/autoSpectra/" target="_blank" rel="noopener">Docs</a>
+          <a class="plink" href="https://doi.org/10.3390/agriengineering5040143" target="_blank" rel="noopener">DOI</a>
         </div>
       </div>
     </div>
@@ -904,18 +936,37 @@
     <!-- 04 -->
     <div class="pub-item">
       <div class="pub-cover">
-        <img src="covers/cover_04_neospectra.png" alt="NeoSpectra manuscript cover">
+        <img src="covers/cover_04_GPR.png" alt="Journal of Applied Geophysics 2022 cover">
       </div>
       <div>
         <div class="pub-num">04</div>
-        <div class="pub-title">Vis–NIR and SWIR fusion for soil property prediction: technical assessment with the NeoSpectra portable sensor</div>
+        <div class="pub-title">Comparing GPR models for soil clay content estimation in a tropical Oxisol</div>
         <div class="pub-authors"><strong>Rodrigues H</strong> et al.</div>
         <div class="pub-meta">
-          <span class="pub-journal">Technical Report · in preparation</span>
-          <span class="pub-year">2025</span>
+          <span class="pub-journal">Journal of Applied Geophysics</span>
+          <span class="pub-year">2022</span>
         </div>
         <div class="pub-links">
-          <span class="plink">In preparation</span>
+          <a class="plink" href="https://doi.org/10.1016/j.jappgeo.2022.104797" target="_blank" rel="noopener">DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="pub-item">
+      <div class="pub-cover">
+        <img src="covers/cover_05_soilsystems.png" alt="Soil Systems 2020 cover">
+      </div>
+      <div>
+        <div class="pub-num">05</div>
+        <div class="pub-title">Soil ECa mapping by electromagnetic induction in a tropical watershed to support precision agriculture</div>
+        <div class="pub-authors"><strong>Rodrigues H</strong> et al.</div>
+        <div class="pub-meta">
+          <span class="pub-journal">Soil Systems · 4(3):56</span>
+          <span class="pub-year">2020</span>
+        </div>
+        <div class="pub-links">
+          <a class="plink" href="https://doi.org/10.3390/soilsystems4030056" target="_blank" rel="noopener">DOI</a>
         </div>
       </div>
     </div>
