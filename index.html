@@ -31,8 +31,6 @@
 
   :root {
     color-scheme: light dark;
-
-    /* ── Light theme ── */
     --bg:          #f7f5f0;
     --bg2:         #ffffff;
     --bg3:         #eceae3;
@@ -48,7 +46,6 @@
     --mono:        'DM Mono', monospace;
   }
 
-  /* ── Dark theme ── */
   @media (prefers-color-scheme: dark) {
     :root {
       --bg:          #16140e;
@@ -75,18 +72,13 @@
     min-height: 100vh;
   }
 
-  /* ─────────────────────────────────────────────
-     LAYOUT
-  ───────────────────────────────────────────── */
   .page-wrap {
-    max-width: 780px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 1.8rem;
   }
 
-  /* ─────────────────────────────────────────────
-     HEADER / PROFILE
-  ───────────────────────────────────────────── */
+  /* ── Header ── */
   .site-header {
     padding: 2.8rem 0 2.2rem;
     border-bottom: 1px solid var(--border);
@@ -121,11 +113,11 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
 
   .profile-badge {
-    width: 40px;
+    width: 38px;
     height: auto;
     display: block;
     filter: drop-shadow(0 1px 3px rgba(0,0,0,.12));
@@ -138,18 +130,8 @@
     line-height: 1.15;
   }
 
-  .profile-role {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 2px;
-  }
-
-  .profile-inst {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
+  .profile-role  { font-size: 13px; color: var(--muted); margin-bottom: 1px; }
+  .profile-inst  { font-size: 13px; font-weight: 500; color: var(--accent); margin-bottom: 3px; }
 
   .profile-loc {
     display: flex;
@@ -158,12 +140,12 @@
     font-size: 12px;
     color: var(--muted);
     font-family: var(--mono);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
   }
 
   .profile-loc svg { flex-shrink: 0; }
 
-  /* ── Social badges ── */
+  /* ── Social row ── */
   .social-row {
     display: flex;
     flex-wrap: wrap;
@@ -180,10 +162,8 @@
     font-size: 12px;
     color: var(--text);
     text-decoration: none;
-    font-family: var(--sans);
-    font-weight: 400;
-    transition: all 0.15s;
     background: var(--bg2);
+    transition: all 0.15s;
   }
 
   .social-btn:hover {
@@ -192,11 +172,7 @@
     color: var(--accent);
   }
 
-  .social-btn svg {
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-  }
+  .social-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
 
   .social-btn .sbadge {
     font-family: var(--mono);
@@ -207,12 +183,8 @@
     border-radius: 2px;
   }
 
-  /* ─────────────────────────────────────────────
-     SECTIONS
-  ───────────────────────────────────────────── */
-  .section {
-    margin-bottom: 3.5rem;
-  }
+  /* ── Sections ── */
+  .section { margin-bottom: 3.5rem; }
 
   .section-title {
     font-family: var(--mono);
@@ -233,84 +205,79 @@
     background: var(--border);
   }
 
-  /* ── About / Bio ── */
+  /* ── About ── */
   .bio {
     font-size: 15px;
     line-height: 1.8;
     color: var(--text);
-    margin-bottom: 1.6rem;
+    margin-bottom: 1rem;
   }
 
-  .interests-grid {
+  .bio-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0.6rem 0 1rem 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 8px;
-    margin-top: 0.6rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 5px 20px;
   }
 
-  .itag {
-    padding: 9px 13px;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 13px;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 9px;
+  .bio-bullets li {
+    font-size: 13.5px;
+    color: var(--muted);
+    padding-left: 1.1em;
+    position: relative;
+    line-height: 1.55;
   }
 
-  .iicon {
-    width: 20px;
-    height: 20px;
-    background: var(--accent-light);
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  .bio-bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-weight: 700;
   }
 
   /* ── R Packages ── */
   .pkg-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
   }
 
   .pkg-card {
     background: var(--bg2);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 7px;
     padding: 14px;
-    transition: border-color 0.15s, background 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .pkg-card:hover {
     border-color: var(--accent2);
-    background: var(--accent-light);
+    box-shadow: 0 3px 12px var(--shadow);
   }
 
   .pkg-card-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
   }
 
   .pkg-logo {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     flex-shrink: 0;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
-  .pkg-title { min-width: 0; }
-
   .pkg-name {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .pkg-version {
@@ -318,6 +285,13 @@
     font-size: 9.5px;
     color: var(--muted);
     margin-top: 2px;
+  }
+
+  .pkg-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    flex: 1;
   }
 
   .pkg-btns {
@@ -337,23 +311,13 @@
     text-decoration: none;
     background: var(--bg3);
     transition: all 0.15s;
+    white-space: nowrap;
   }
 
-  .pkg-btn:hover {
-    border-color: var(--accent2);
-    color: var(--accent);
-    background: var(--accent-light);
-  }
-
-  .pkg-btn.cran {
-    border-color: rgba(66,133,244,0.35);
-    color: #4285F4;
-  }
-
-  .pkg-btn.doi {
-    border-color: rgba(45,90,61,0.35);
-    color: var(--accent);
-  }
+  .pkg-btn:hover { border-color: var(--accent2); color: var(--accent); background: var(--accent-light); }
+  .pkg-btn.cran  { border-color: rgba(66,133,244,0.35); color: #4285F4; }
+  .pkg-btn.doi   { border-color: rgba(45,90,61,0.35); color: var(--accent); }
+  .pkg-btn.na    { opacity: 0.35; cursor: default; pointer-events: none; }
 
   /* ── Publications ── */
   .pub-item {
@@ -375,15 +339,6 @@
     border-radius: 3px;
     overflow: hidden;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--muted);
-    text-align: center;
-    line-height: 1.4;
-    padding: 4px;
   }
 
   .pub-cover img {
@@ -404,19 +359,17 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 1.38;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
 
   .pub-authors {
     font-size: 12.5px;
     color: var(--muted);
     margin-bottom: 5px;
+    line-height: 1.5;
   }
 
-  .pub-authors strong {
-    color: var(--text);
-    font-weight: 500;
-  }
+  .pub-authors strong { color: var(--text); font-weight: 500; }
 
   .pub-meta {
     display: flex;
@@ -426,23 +379,10 @@
     margin-bottom: 8px;
   }
 
-  .pub-journal {
-    font-style: italic;
-    font-size: 12.5px;
-    color: var(--muted);
-  }
+  .pub-journal { font-style: italic; font-size: 12.5px; color: var(--muted); }
+  .pub-year    { font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
-  .pub-year {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .pub-links {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-  }
+  .pub-links { display: flex; gap: 5px; flex-wrap: wrap; }
 
   .plink {
     display: inline-block;
@@ -454,141 +394,194 @@
     color: var(--muted);
     text-decoration: none;
     transition: all 0.15s;
+    background: transparent;
+    cursor: pointer;
   }
 
-  .plink:hover {
-    border-color: var(--accent2);
+  .plink:hover { border-color: var(--accent2); color: var(--accent); background: var(--accent-light); }
+
+  .plink.bib-btn { border-color: rgba(45,90,61,0.35); color: var(--accent); }
+  .plink.bib-btn:hover { background: var(--accent-light); }
+
+  /* ── Experience / Education cards ── */
+  .exp-block {
+    margin-bottom: 1.8rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    border-left: 3px solid var(--accent2);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .exp-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .exp-inst {
+    font-size: 12.5px;
     color: var(--accent);
+    font-weight: 500;
+  }
+
+  .exp-year {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 1.2em;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .exp-bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-weight: 700;
+  }
+
+  /* ── Contact grid ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.15s;
+  }
+
+  .contact-card:hover {
+    border-color: var(--accent2);
     background: var(--accent-light);
   }
 
-  /* ── Education ── */
-  .edu-item {
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 1rem;
-    align-items: start;
+  .contact-card .cc-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    overflow: hidden;
   }
 
-  .edu-item:first-child { border-top: 1px solid var(--border); }
+  .contact-card .cc-icon svg { width: 28px; height: 28px; }
 
-  .edu-degree {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 3px;
+  .contact-card .cc-info { min-width: 0; }
+
+  .contact-card .cc-label {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
   }
 
-  .edu-inst {
+  .contact-card .cc-val {
     font-size: 12.5px;
-    color: var(--muted);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text);
   }
 
-  .edu-year {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--muted);
-    text-align: right;
+  .contact-card.affil {
+    grid-column: 1 / -1;
+    background: var(--bg2);
   }
 
-  /* ── Contact ── */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 5px;
-    font-size: 13.5px;
-    line-height: 2.1;
-    max-width: 480px;
+  .contact-card.affil .cc-icon {
+    background: var(--accent-light);
   }
 
-  .clabel {
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.07em;
-    padding-top: 3px;
+  .contact-card.affil .cc-val {
+    white-space: normal;
+    font-size: 13px;
+    font-weight: 400;
   }
 
-  .cval a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  .cval a:hover { text-decoration: underline; }
-
-  /* ─────────────────────────────────────────────
-     FOOTER
-  ───────────────────────────────────────────── */
+  /* ── Footer ── */
   footer {
     border-top: 1px solid var(--border);
-    padding: 1.5rem 0 2rem;
+    padding: 1.5rem 1.8rem 2rem;
     font-size: 11.5px;
     color: var(--muted);
     letter-spacing: 0.02em;
-    max-width: 780px;
+    max-width: 800px;
     margin: 0 auto;
-    padding-left: 1.8rem;
-    padding-right: 1.8rem;
   }
 
-  /* ─────────────────────────────────────────────
-     RESPONSIVE
-  ───────────────────────────────────────────── */
+  /* ── Responsive ── */
   @media (max-width: 600px) {
     .profile-row { flex-direction: column; gap: 1.2rem; }
     .profile-photo-wrap { width: 90px; height: 90px; }
     .profile-name { font-size: 1.5rem; }
-
     .pkg-grid { grid-template-columns: 1fr; }
-
     .pub-item { grid-template-columns: 60px 1fr; }
     .pub-cover { width: 60px; height: 80px; }
+    .exp-header { flex-direction: column; gap: 2px; }
+    .exp-year { text-align: left; }
   }
 
   @media (max-width: 400px) {
     .pub-item { grid-template-columns: 1fr; }
-    .pub-cover { width: 100%; height: 140px; }
+    .pub-cover { width: 100%; height: 120px; }
   }
 
-  /* ─────────────────────────────────────────────
-     DARK MODE — ajustes finos
-  ───────────────────────────────────────────── */
+  /* ── Dark mode tweaks ── */
   @media (prefers-color-scheme: dark) {
-
-    .profile-photo-wrap {
-      border-color: rgba(237, 234, 225, 0.15);
-    }
-
-    .pub-cover img {
-      opacity: 0.88;
-      filter: brightness(0.92) contrast(1.04);
-    }
-
-    .profile-badge {
-      filter: drop-shadow(0 1px 4px rgba(0,0,0,.45));
-    }
-
-    .itag {
-      background: var(--bg2);
-    }
-
-    .plink {
-      background: var(--bg3);
-    }
+    .profile-photo-wrap { border-color: rgba(237, 234, 225, 0.15); }
+    .pub-cover img { opacity: 0.88; filter: brightness(0.92) contrast(1.04); }
+    .profile-badge { filter: drop-shadow(0 1px 4px rgba(0,0,0,.45)); }
+    .plink { background: var(--bg3); }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg2); }
-    ::-webkit-scrollbar-thumb {
-      background: var(--bg3);
-      border-radius: 3px;
-    }
+    ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-    ::selection {
-      background: var(--accent-light);
-      color: var(--accent2);
-    }
+    ::selection { background: var(--accent-light); color: var(--accent2); }
   }
 </style>
 </head>
@@ -596,18 +589,12 @@
 
 <div class="page-wrap">
 
-<!-- ══════════════════════════════════════════
-     HEADER
-══════════════════════════════════════════ -->
+<!-- ══ HEADER ══ -->
 <header class="site-header">
   <div class="profile-row">
-
-    <!-- Photo -->
     <div class="profile-photo-wrap">
       <img src="20200919182018_IMG_2697%20(2).JPG" alt="Hugo Rodrigues">
     </div>
-
-    <!-- Info -->
     <div class="profile-info">
       <div class="profile-top">
         <picture>
@@ -616,403 +603,509 @@
         </picture>
         <h1 class="profile-name">Hugo Rodrigues</h1>
       </div>
-
-      <div class="profile-role">Postdoctoral Associate</div>
-      <div class="profile-inst">University of Florida</div>
+      <div class="profile-role">Postdoctoral Researcher</div>
+      <div class="profile-inst">University of Florida – UF/IFAS</div>
       <div class="profile-loc">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
         </svg>
         Gainesville, FL · USA
       </div>
-
-      <!-- Social links -->
       <div class="social-row">
 
-        <!-- ORCID -->
         <a class="social-btn" href="https://orcid.org/0000-0002-8070-8126" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#A6CE39" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0z"/>
-            <path fill="#fff" d="M7.369 4.378a.946.946 0 1 1 0 1.892.946.946 0 0 1 0-1.892zM6.647 7.416h1.444V17.46H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.334-1.563 3.334-3.722s-1.1-3.722-3.431-3.722h-2.2z"/>
-          </svg>
-          ORCID
-          <span class="sbadge">0000-0002-8070-8126</span>
+          <svg viewBox="0 0 24 24"><path fill="#A6CE39" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0z"/><path fill="#fff" d="M7.369 4.378a.946.946 0 1 1 0 1.892.946.946 0 0 1 0-1.892zM6.647 7.416h1.444V17.46H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.334-1.563 3.334-3.722s-1.1-3.722-3.431-3.722h-2.2z"/></svg>
+          ORCID <span class="sbadge">0000-0002-8070-8126</span>
         </a>
 
-        <!-- Google Scholar -->
         <a class="social-btn" href="https://scholar.google.com/citations?user=vu-Ka7wAAAAJ&hl=en" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#4285F4" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
           Google Scholar
         </a>
 
-        <!-- ResearchGate -->
         <a class="social-btn" href="https://www.researchgate.net/profile/Hugo-Rodrigues-12" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#00CCBB" d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.485 12.485 0 0 0-.32 2.211 12.493 12.493 0 0 0-.032.921A6.06 6.06 0 0 1 15 7.16l-1.36 1.35C12.388 9.763 11.43 11 11.43 12.5c0 1.501.96 2.737 2.212 3.988A5.998 5.998 0 0 1 15 18.146v.316c0 .727-.115 1.374-.346 1.934-.232.56-.55.993-.952 1.298-.402.305-.858.458-1.368.458h-.218c-.368 0-.689-.098-.96-.295-.27-.197-.487-.505-.65-.923a3.93 3.93 0 0 1-.242-1.407c0-.66.137-1.237.412-1.724.274-.488.644-.858 1.11-1.112l.018-.009L10.77 15.4l-.017.01c-.7.403-1.25 1.006-1.648 1.81a6.17 6.17 0 0 0-.595 2.728c0 .97.196 1.845.588 2.621.392.776.953 1.39 1.683 1.84.73.452 1.598.678 2.602.678 1.053 0 1.968-.264 2.744-.79.776-.527 1.376-1.283 1.797-2.267.42-.985.63-2.148.63-3.49v-.19c0-.87.22-1.658.665-2.362l3.76-5.894H19.71l-2.258 3.588c-.148-.38-.315-.764-.503-1.15a17.81 17.81 0 0 0-.688-1.24l2.258-3.588h1.282l.042-.067a9.028 9.028 0 0 0 1.022-4.08C20.866 2.08 20.404.001 19.586 0zm-5.327 14.006c-.38-.386-.717-.771-1.011-1.153a5.48 5.48 0 0 1-.705-1.354 4.23 4.23 0 0 1-.238-1.405v-.064c.008-.495.114-.932.316-1.31.2-.377.47-.667.807-.87.337-.2.712-.3 1.124-.3.41 0 .79.1 1.133.298.34.2.61.49.808.867.197.377.295.815.295 1.311 0 .5-.098.937-.295 1.311a2.19 2.19 0 0 1-.807.867c-.343.2-.72.298-1.133.298h-.028a2.17 2.17 0 0 1-.266-.496z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path fill="#00CCBB" d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.485 12.485 0 0 0-.32 2.211 12.493 12.493 0 0 0-.032.921A6.06 6.06 0 0 1 15 7.16l-1.36 1.35C12.388 9.763 11.43 11 11.43 12.5c0 1.501.96 2.737 2.212 3.988A5.998 5.998 0 0 1 15 18.146v.316c0 .727-.115 1.374-.346 1.934-.232.56-.55.993-.952 1.298-.402.305-.858.458-1.368.458h-.218c-.368 0-.689-.098-.96-.295-.27-.197-.487-.505-.65-.923a3.93 3.93 0 0 1-.242-1.407c0-.66.137-1.237.412-1.724.274-.488.644-.858 1.11-1.112l.018-.009L10.77 15.4l-.017.01c-.7.403-1.25 1.006-1.648 1.81a6.17 6.17 0 0 0-.595 2.728c0 .97.196 1.845.588 2.621.392.776.953 1.39 1.683 1.84.73.452 1.598.678 2.602.678 1.053 0 1.968-.264 2.744-.79.776-.527 1.376-1.283 1.797-2.267.42-.985.63-2.148.63-3.49v-.19c0-.87.22-1.658.665-2.362l3.76-5.894H19.71l-2.258 3.588c-.148-.38-.315-.764-.503-1.15a17.81 17.81 0 0 0-.688-1.24l2.258-3.588h1.282l.042-.067a9.028 9.028 0 0 0 1.022-4.08C20.866 2.08 20.404.001 19.586 0zm-5.327 14.006c-.38-.386-.717-.771-1.011-1.153a5.48 5.48 0 0 1-.705-1.354 4.23 4.23 0 0 1-.238-1.405v-.064c.008-.495.114-.932.316-1.31.2-.377.47-.667.807-.87.337-.2.712-.3 1.124-.3.41 0 .79.1 1.133.298.34.2.61.49.808.867.197.377.295.815.295 1.311 0 .5-.098.937-.295 1.311a2.19 2.19 0 0 1-.807.867c-.343.2-.72.298-1.133.298h-.028a2.17 2.17 0 0 1-.266-.496z"/></svg>
           ResearchGate
         </a>
 
-        <!-- GitHub -->
         <a class="social-btn" href="https://github.com/HugoMachadoRodrigues" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           GitHub
         </a>
 
-        <!-- Twitter / X -->
         <a class="social-btn" href="https://x.com/Hugo_MRodrigues" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
           Twitter / X
         </a>
 
-        <!-- Publons / Web of Science -->
         <a class="social-btn" href="https://publons.com/researcher/1443505/hugo-machado-rodrigues/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <rect width="24" height="24" rx="4" fill="#336699"/>
-            <path fill="#fff" d="M4.5 6h3.1L9.8 15l2.3-9h2.3l2.3 9 2.2-9H22l-3.3 12h-2.8l-2.1-8.2L11.7 18H8.9z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#336699"/><path fill="#fff" d="M4.5 6h3.1L9.8 15l2.3-9h2.3l2.3 9 2.2-9H22l-3.3 12h-2.8l-2.1-8.2L11.7 18H8.9z"/></svg>
           Publons
         </a>
 
-      </div><!-- /social-row -->
-    </div><!-- /profile-info -->
-  </div><!-- /profile-row -->
+      </div>
+    </div>
+  </div>
 </header>
 
 
-<!-- ══════════════════════════════════════════
-     MAIN CONTENT
-══════════════════════════════════════════ -->
+<!-- ══ ABOUT ══ -->
+<section class="section" id="about">
+  <div class="section-title">About</div>
 
-  <!-- ── ABOUT ── -->
-  <section class="section" id="about">
-    <div class="section-title">About</div>
+  <p class="bio">
+    My research focuses on soil systems, soil–water processes, and the quantitative analysis of soil
+    information across laboratory, field, and spatial scales. Across my trajectory, I have built
+    experience in soil laboratory data, soil sampling, in-situ measurements, pedometrics,
+    geocomputing, and reproducible analytical workflows, with particular emphasis on integrating
+    soil science knowledge with statistics, coding, and environmental data analysis:
+  </p>
+  <ul class="bio-bullets">
+    <li>Near-surface geophysics (GPR, EMI – EM38, gamma radiometrics)</li>
+    <li>Soil hydrological measurements (water retention, soil moisture dynamics, hydraulic behavior indicators)</li>
+    <li>Spatial statistics</li>
+    <li>Sampling design optimization</li>
+    <li>Multi-source data fusion (proximal + orbital)</li>
+    <li>Algorithm development for spatial delineation (autoRA)</li>
+    <li>Representation learning for soil-state synthesis (soilVAE)</li>
+    <li>Physics-informed neural networks for soil water retention curve prediction (soilFlux)</li>
+  </ul>
+  <p class="bio" style="margin-top:.6rem">
+    The central objective is to formalize hydro-pedological variability across space and time,
+    separating intrinsic soil heterogeneity from management-induced change.
+  </p>
+</section>
 
-    <p class="bio">
-      I am a soil scientist specialising in soil spectroscopy and pedometrics. My research applies
-      statistical and deep learning methods — including supervised variational autoencoders and
-      automated spectral resampling — to predict soil properties from Vis–NIR and SWIR spectral
-      data. I emphasise methodological rigour in model calibration, open-source software
-      development, and reproducible analytical pipelines.
-    </p>
 
-    <div class="interests-grid">
+<!-- ══ R PACKAGES ══ -->
+<section class="section" id="packages">
+  <div class="section-title">R Packages</div>
+  <div class="pkg-grid">
 
-      <div class="itag">
-        <div class="iicon">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <path d="M2 11 L7 4 L12 11" stroke="#2d5a3d" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="4" y1="8.5" x2="10" y2="8.5" stroke="#4a8c62" stroke-width="1.1"/>
-          </svg>
+    <!-- soilVAE -->
+    <div class="pkg-card">
+      <div class="pkg-card-header">
+        <img src="Logos/soilVAE.png" alt="soilVAE hex logo" class="pkg-logo">
+        <div>
+          <div class="pkg-name">soilVAE</div>
+          <div class="pkg-version">v0.1.9 · R / TensorFlow</div>
         </div>
-        Soil Vis–NIR &amp; SWIR spectroscopy
       </div>
-
-      <div class="itag">
-        <div class="iicon">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <circle cx="3" cy="11" r="1.5" fill="#2d5a3d"/>
-            <circle cx="7" cy="5"  r="1.5" fill="#4a8c62"/>
-            <circle cx="11" cy="9" r="1.5" fill="#2d5a3d"/>
-            <line x1="3" y1="11" x2="7" y2="5" stroke="#4a8c62" stroke-width="1"/>
-            <line x1="7" y1="5" x2="11" y2="9" stroke="#4a8c62" stroke-width="1"/>
-          </svg>
-        </div>
-        Deep learning &amp; variational autoencoders
+      <p class="pkg-desc">Supervised latent-variable regression for high-dimensional predictors such as soil reflectance spectra, using an encoder-decoder neural network with a stochastic Gaussian latent representation regularized by a Kullback-Leibler term.</p>
+      <div class="pkg-btns">
+        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilVAE" target="_blank" rel="noopener">GitHub</a>
+        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilVAE/" target="_blank" rel="noopener">Docs</a>
+        <a class="pkg-btn cran" href="https://CRAN.R-project.org/package=soilVAE" target="_blank" rel="noopener">CRAN</a>
+        <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.18715456" target="_blank" rel="noopener">DOI</a>
       </div>
-
-      <div class="itag">
-        <div class="iicon">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <rect x="1" y="8" width="12" height="4" rx="1" fill="#2d5a3d" opacity="0.35"/>
-            <rect x="1" y="4" width="12" height="4" fill="#4a8c62" opacity="0.35"/>
-            <rect x="1" y="1" width="12" height="3" rx="1" fill="#2d5a3d" opacity="0.55"/>
-          </svg>
-        </div>
-        Pedometrics &amp; digital soil mapping
-      </div>
-
-      <div class="itag">
-        <div class="iicon">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <ellipse cx="7" cy="7" rx="2.5" ry="5.5" stroke="#2d5a3d" stroke-width="1" fill="none"/>
-            <line x1="1.5" y1="7" x2="12.5" y2="7" stroke="#4a8c62" stroke-width="1"/>
-            <ellipse cx="7" cy="7" rx="5.5" ry="5.5" stroke="#2d5a3d" stroke-width="1" fill="none"/>
-          </svg>
-        </div>
-        Soil landscape modelling &amp; GIS
-      </div>
-
-      <div class="itag">
-        <div class="iicon">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <rect x="1" y="3" width="12" height="8" rx="2" fill="#2d5a3d" opacity="0.3"/>
-            <path d="M4 7 L6 9 L10 5" stroke="#2d5a3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        Open-source R packages
-      </div>
-
-      <div class="itag">
-        <div class="iicon">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <polyline points="2,10 5,5 8,7 12,3" stroke="#2d5a3d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-        Automated spectral resampling (autoRA)
-      </div>
-
     </div>
-  </section>
 
-  <!-- ── R PACKAGES ── -->
-  <section class="section" id="packages">
-    <div class="section-title">R Packages</div>
-
-    <div class="pkg-grid">
-
-      <!-- soilVAE -->
-      <div class="pkg-card">
-        <div class="pkg-card-header">
-          <img src="Logos/soilVAE.png" alt="soilVAE hex logo" class="pkg-logo">
-          <div class="pkg-title">
-            <div class="pkg-name">soilVAE</div>
-            <div class="pkg-version">v0.1.2 · R / TensorFlow</div>
-          </div>
-        </div>
-        <div class="pkg-btns">
-          <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilVAE" target="_blank" rel="noopener">GitHub</a>
-          <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilVAE/" target="_blank" rel="noopener">Docs</a>
-          <a class="pkg-btn cran" href="https://CRAN.R-project.org/package=soilVAE" target="_blank" rel="noopener">CRAN</a>
-          <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.18715456" target="_blank" rel="noopener">DOI</a>
+    <!-- autoSpectra -->
+    <div class="pkg-card">
+      <div class="pkg-card-header">
+        <img src="Logos/autoSpectra.png" alt="autoSpectra hex logo" class="pkg-logo">
+        <div>
+          <div class="pkg-name">autoSpectra</div>
+          <div class="pkg-version">v0.3.0 · R / Shiny</div>
         </div>
       </div>
-
-      <!-- autoSpectra -->
-      <div class="pkg-card">
-        <div class="pkg-card-header">
-          <img src="Logos/autoSpectra.png" alt="autoSpectra hex logo" class="pkg-logo">
-          <div class="pkg-title">
-            <div class="pkg-name">autoSpectra</div>
-            <div class="pkg-version">v0.3.0 · R / Shiny</div>
-          </div>
-        </div>
-        <div class="pkg-btns">
-          <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/autoSpectra" target="_blank" rel="noopener">GitHub</a>
-          <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/autoSpectra/" target="_blank" rel="noopener">Docs</a>
-          <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.19004686" target="_blank" rel="noopener">DOI</a>
-        </div>
+      <p class="pkg-desc">Integrated platform for soil spectroscopy modeling, visualization, and prediction. Supports Vis-NIR and MIR spectra, leveraging the Open Soil Spectral Library (OSSL) to train sensor-agnostic soilVAE models. Includes a Shiny interface for interactive prediction.</p>
+      <div class="pkg-btns">
+        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/autoSpectra" target="_blank" rel="noopener">GitHub</a>
+        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/autoSpectra/" target="_blank" rel="noopener">Docs</a>
+        <a class="pkg-btn cran na" href="#" aria-disabled="true">CRAN</a>
+        <a class="pkg-btn doi" href="https://doi.org/10.5281/zenodo.19004686" target="_blank" rel="noopener">DOI</a>
       </div>
-
-      <!-- soilFlux -->
-      <div class="pkg-card">
-        <div class="pkg-card-header">
-          <img src="Logos/soilFlux.png" alt="soilFlux hex logo" class="pkg-logo">
-          <div class="pkg-title">
-            <div class="pkg-name">soilFlux</div>
-            <div class="pkg-version">v0.1.0 · R / CNN1D</div>
-          </div>
-        </div>
-        <div class="pkg-btns">
-          <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilFlux" target="_blank" rel="noopener">GitHub</a>
-          <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilFlux/" target="_blank" rel="noopener">Docs</a>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- ── PUBLICATIONS ── -->
-  <section class="section" id="publications">
-    <div class="section-title">Publications</div>
-
-    <!-- 01 -->
-    <div class="pub-item">
-      <div class="pub-cover">
-        <img src="covers/cover_01_autoRA_frontiers.png" alt="AutoRA Frontiers in Soil Science cover">
+    <!-- soilFlux -->
+    <div class="pkg-card">
+      <div class="pkg-card-header">
+        <img src="Logos/soilFlux.png" alt="soilFlux hex logo" class="pkg-logo">
+        <div>
+          <div class="pkg-name">soilFlux</div>
+          <div class="pkg-version">v0.1.5 · R / CNN1D-PINN</div>
+        </div>
       </div>
+      <p class="pkg-desc">Physics-informed CNN1D for estimating the complete soil water retention curve (SWRC) as a continuous function of matric potential from soil texture, organic carbon, bulk density, and depth. Enforces monotonic decrease by construction.</p>
+      <div class="pkg-btns">
+        <a class="pkg-btn" href="https://github.com/HugoMachadoRodrigues/soilFlux" target="_blank" rel="noopener">GitHub</a>
+        <a class="pkg-btn" href="https://hugomachadorodrigues.github.io/soilFlux/" target="_blank" rel="noopener">Docs</a>
+        <a class="pkg-btn cran na" href="#" aria-disabled="true">CRAN</a>
+        <a class="pkg-btn doi na" href="#" aria-disabled="true">DOI</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ PUBLICATIONS ══ -->
+<section class="section" id="publications">
+  <div class="section-title">Publications</div>
+
+  <!-- 01 -->
+  <div class="pub-item">
+    <div class="pub-cover"><img src="covers/cover_01_autoRA_frontiers.png" alt="Frontiers in Soil Science 2025 cover"></div>
+    <div>
+      <div class="pub-num">01</div>
+      <div class="pub-title">AutoRA: an innovative algorithm for automatic delineation of reference areas in support of smart soil sampling and digital soil twins</div>
+      <div class="pub-authors"><strong>Rodrigues H</strong>, Ceddia MB, Vasques GM, Grunwald S, Babaeian E</div>
+      <div class="pub-meta">
+        <span class="pub-journal">Frontiers in Soil Science</span>
+        <span class="pub-year">2025 · vol. 5</span>
+      </div>
+      <div class="pub-links">
+        <a class="plink" href="https://doi.org/10.3389/fsoil.2025.1557566" target="_blank" rel="noopener">DOI</a>
+        <button class="plink bib-btn" onclick="copyBib(this)" data-bib="@article{Rodrigues2025autoRA,
+  author  = {Rodrigues, Hugo and Ceddia, Marcos Bacis and Vasques, Gustavo Mattos and Grunwald, Sabine and Babaeian, Ebrahim},
+  title   = {{AutoRA}: an innovative algorithm for automatic delineation of reference areas in support of smart soil sampling and digital soil twins},
+  journal = {Frontiers in Soil Science},
+  volume  = {5},
+  year    = {2025},
+  doi     = {10.3389/fsoil.2025.1557566}
+}">BIB</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="pub-item">
+    <div class="pub-cover"><img src="covers/cover_02_autoRA_land.png" alt="Land 2025 cover"></div>
+    <div>
+      <div class="pub-num">02</div>
+      <div class="pub-title">autoRA: An Algorithm to Automatically Delineate Reference Areas — A Case Study to Map Soil Classes in Bahia, Brazil</div>
+      <div class="pub-authors"><strong>Rodrigues H</strong>, Ceddia MB, Vasques GM, Grunwald S, Babaeian E, Villela ALO</div>
+      <div class="pub-meta">
+        <span class="pub-journal">Land</span>
+        <span class="pub-year">2025 · 14(3):604</span>
+      </div>
+      <div class="pub-links">
+        <a class="plink" href="https://doi.org/10.3390/land14030604" target="_blank" rel="noopener">DOI</a>
+        <button class="plink bib-btn" onclick="copyBib(this)" data-bib="@article{Rodrigues2025autoRAland,
+  author  = {Rodrigues, Hugo and Ceddia, Marcos Bacis and Vasques, Gustavo Mattos and Grunwald, Sabine and Babaeian, Ebrahim and Villela, Andr{\'{e}} Luis Oliveira},
+  title   = {{autoRA}: An Algorithm to Automatically Delineate Reference Areas---{A} Case Study to Map Soil Classes in {Bahia, Brazil}},
+  journal = {Land},
+  volume  = {14},
+  number  = {3},
+  pages   = {604},
+  year    = {2025},
+  doi     = {10.3390/land14030604}
+}">BIB</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="pub-item">
+    <div class="pub-cover"><img src="covers/cover_03_agriengineering.png" alt="AgriEngineering 2023 cover"></div>
+    <div>
+      <div class="pub-num">03</div>
+      <div class="pub-title">Remote Sensing and Kriging with External Drift to Improve Sparse Proximal Soil Sensing Data and Define Management Zones in Precision Agriculture</div>
+      <div class="pub-authors"><strong>Rodrigues H</strong>, Ceddia MB, Vasques GM, Mulder VL, Heuvelink GBM, Oliveira RP, Brandão ZN, Morais JPS, Neves ML, Tavares SRL</div>
+      <div class="pub-meta">
+        <span class="pub-journal">AgriEngineering</span>
+        <span class="pub-year">2023 · 5(4):2326–2348</span>
+      </div>
+      <div class="pub-links">
+        <a class="plink" href="https://doi.org/10.3390/agriengineering5040143" target="_blank" rel="noopener">DOI</a>
+        <button class="plink bib-btn" onclick="copyBib(this)" data-bib="@article{Rodrigues2023remote,
+  author  = {Rodrigues, Hugo and Ceddia, Marcos B. and Vasques, Gustavo M. and Mulder, Vera L. and Heuvelink, Gerard B. M. and Oliveira, Ronaldo P. and Brand{\~{a}}o, Ziany N. and Morais, Jo{\~{a}}o P. S. and Neves, Matheus L. and Tavares, S{\'{i}}lvio R. L.},
+  title   = {Remote Sensing and Kriging with External Drift to Improve Sparse Proximal Soil Sensing Data and Define Management Zones in Precision Agriculture},
+  journal = {AgriEngineering},
+  volume  = {5},
+  number  = {4},
+  pages   = {2326--2348},
+  year    = {2023},
+  doi     = {10.3390/agriengineering5040143}
+}">BIB</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div class="pub-item">
+    <div class="pub-cover"><img src="covers/cover_04_GPR.png" alt="Journal of Applied Geophysics 2022 cover"></div>
+    <div>
+      <div class="pub-num">04</div>
+      <div class="pub-title">Ground penetrating radar (GPR) models of the regolith and water reservoir of an underground dam in the Brazilian semiarid region</div>
+      <div class="pub-authors">Vasques GM, <strong>Rodrigues HM</strong>, Huber E, Tavares SRL, Marques FA, Silva MSL</div>
+      <div class="pub-meta">
+        <span class="pub-journal">Journal of Applied Geophysics</span>
+        <span class="pub-year">2022 · 206:104797</span>
+      </div>
+      <div class="pub-links">
+        <a class="plink" href="https://doi.org/10.1016/j.jappgeo.2022.104797" target="_blank" rel="noopener">DOI</a>
+        <button class="plink bib-btn" onclick="copyBib(this)" data-bib="@article{Vasques2022GPR,
+  author  = {Vasques, Gustavo M. and Rodrigues, Hugo M. and Huber, Emanuel and Tavares, S{\'{i}}lvio R. L. and Marques, Fl{\'{a}}vio A. and Silva, Maria S{\^{o}}nia L.},
+  title   = {Ground penetrating radar ({GPR}) models of the regolith and water reservoir of an underground dam in the {Brazilian} semiarid region},
+  journal = {Journal of Applied Geophysics},
+  volume  = {206},
+  pages   = {104797},
+  year    = {2022},
+  doi     = {10.1016/j.jappgeo.2022.104797}
+}">BIB</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div class="pub-item">
+    <div class="pub-cover"><img src="covers/cover_05_soilsystems.png" alt="Soil Systems 2020 cover"></div>
+    <div>
+      <div class="pub-num">05</div>
+      <div class="pub-title">Finding Suitable Transect Spacing and Sampling Designs for Accurate Soil ECa Mapping from EM38-MK2</div>
+      <div class="pub-authors"><strong>Rodrigues HM</strong>, Vasques GM, Oliveira RP, Tavares SRL, Ceddia MB, Hernani LC</div>
+      <div class="pub-meta">
+        <span class="pub-journal">Soil Systems</span>
+        <span class="pub-year">2020 · 4(3):56</span>
+      </div>
+      <div class="pub-links">
+        <a class="plink" href="https://doi.org/10.3390/soilsystems4030056" target="_blank" rel="noopener">DOI</a>
+        <button class="plink bib-btn" onclick="copyBib(this)" data-bib="@article{Rodrigues2020soilECa,
+  author  = {Rodrigues, Hugo M. and Vasques, Gustavo M. and Oliveira, Ronaldo P. and Tavares, S{\'{i}}lvio R. L. and Ceddia, Marcos B. and Hernani, Lu{\'{i}}s C.},
+  title   = {Finding Suitable Transect Spacing and Sampling Designs for Accurate Soil {ECa} Mapping from {EM38-MK2}},
+  journal = {Soil Systems},
+  volume  = {4},
+  number  = {3},
+  pages   = {56},
+  year    = {2020},
+  doi     = {10.3390/soilsystems4030056}
+}">BIB</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.1rem">
+    <a class="plink" href="https://scholar.google.com/citations?user=vu-Ka7wAAAAJ&hl=en" target="_blank" rel="noopener" style="font-size:12px;">→ Full list on Google Scholar</a>
+  </div>
+
+</section>
+
+
+<!-- ══ CURRENT POSITION ══ -->
+<section class="section" id="position">
+  <div class="section-title">Current Position</div>
+
+  <div class="exp-block">
+    <div class="exp-header">
       <div>
-        <div class="pub-num">01</div>
-        <div class="pub-title">AutoRA: an automated and open-source pipeline for spectral resampling of soil Vis–NIR reflectance data</div>
-        <div class="pub-authors"><strong>Rodrigues H</strong>, Grunwald S</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Frontiers in Soil Science</span>
-          <span class="pub-year">2025</span>
-        </div>
-        <div class="pub-links">
-          <a class="plink" href="https://doi.org/10.3389/fsoil.2025.1557566" target="_blank" rel="noopener">DOI</a>
-        </div>
+        <div class="exp-title">Postdoctoral Researcher</div>
+        <div class="exp-inst">University of Florida – Institute of Food and Agricultural Sciences (UF/IFAS), USA</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:3px;">Climate-Smart Agriculture &amp; Best Management Practices · Everglades Agricultural Area</div>
       </div>
+      <div class="exp-year">2024 – present</div>
     </div>
+    <ul class="exp-bullets">
+      <li>Analysis of multi-year, repeated-measures soil datasets integrating laboratory physical attributes, phosphorus-related properties, management data, and hydrological indicators</li>
+      <li>Spatial-temporal interpretation of soil trajectories under intensive management</li>
+      <li>Development of process-informed modeling frameworks for soil monitoring</li>
+      <li>Latent-space representation of multivariate soil systems (soilVAE) for long-term comparison and uncertainty control</li>
+      <li>Integration of proximal sensing, spectroscopy, and spatial modeling for system-scale inference</li>
+    </ul>
+  </div>
+</section>
 
-    <!-- 02 -->
-    <div class="pub-item">
-      <div class="pub-cover">
-        <img src="covers/cover_02_autoRA_land.png" alt="autoRA Land cover">
-      </div>
+
+<!-- ══ PREVIOUS RESEARCH EXPERIENCE ══ -->
+<section class="section" id="experience">
+  <div class="section-title">Previous Research Experience</div>
+
+  <div class="exp-block">
+    <div class="exp-header">
       <div>
-        <div class="pub-num">02</div>
-        <div class="pub-title">autoRA: an R package for automated spectral resampling of soil reflectance data across sensor configurations</div>
-        <div class="pub-authors"><strong>Rodrigues H</strong>, Grunwald S</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Land · 14(3):604</span>
-          <span class="pub-year">2025</span>
-        </div>
-        <div class="pub-links">
-          <a class="plink" href="https://doi.org/10.3390/land14030604" target="_blank" rel="noopener">DOI</a>
-        </div>
+        <div class="exp-title">Assistant Researcher</div>
+        <div class="exp-inst">Embrapa Solos, Brazil</div>
       </div>
     </div>
+    <ul class="exp-bullets">
+      <li>Ground penetrating radar (GPR) mapping of regolith depth and subsurface water storage to support underground dam allocation for smallholder farmers in the Brazilian semiarid region</li>
+      <li>Application of hydro-pedological assessments to integrated crop–livestock systems and soil–water best management practices in headwater catchments</li>
+    </ul>
+  </div>
+</section>
 
-    <!-- 03 -->
-    <div class="pub-item">
-      <div class="pub-cover">
-        <img src="covers/cover_03_agriengineering.png" alt="AgriEngineering 2023 cover">
-      </div>
+
+<!-- ══ EDUCATION ══ -->
+<section class="section" id="education">
+  <div class="section-title">Education</div>
+
+  <div class="exp-block">
+    <div class="exp-header">
       <div>
-        <div class="pub-num">03</div>
-        <div class="pub-title">Mapping soil organic carbon and clay using remote sensing and kriging in a subtropical watershed</div>
-        <div class="pub-authors"><strong>Rodrigues H</strong> et al.</div>
-        <div class="pub-meta">
-          <span class="pub-journal">AgriEngineering</span>
-          <span class="pub-year">2023</span>
-        </div>
-        <div class="pub-links">
-          <a class="plink" href="https://doi.org/10.3390/agriengineering5040143" target="_blank" rel="noopener">DOI</a>
-        </div>
+        <div class="exp-title">PhD &amp; MSc — Agronomy / Soil Science</div>
+        <div class="exp-inst">Universidade Federal Rural do Rio de Janeiro (UFRRJ) · Brazil</div>
       </div>
+      <div class="exp-year">2018 – 2025</div>
     </div>
+    <ul class="exp-bullets">
+      <li>Electromagnetic induction (EM38-MK2) for soil apparent electrical conductivity mapping</li>
+      <li>Sampling density optimization and transect spacing design</li>
+      <li>Geostatistical modeling (OK, KED)</li>
+      <li>Delineation of management zones in agricultural landscapes</li>
+      <li>Integration of proximal and satellite data</li>
+    </ul>
+  </div>
 
-    <!-- 04 -->
-    <div class="pub-item">
-      <div class="pub-cover">
-        <img src="covers/cover_04_GPR.png" alt="Journal of Applied Geophysics 2022 cover">
-      </div>
+  <div class="exp-block">
+    <div class="exp-header">
       <div>
-        <div class="pub-num">04</div>
-        <div class="pub-title">Comparing GPR models for soil clay content estimation in a tropical Oxisol</div>
-        <div class="pub-authors"><strong>Rodrigues H</strong> et al.</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Journal of Applied Geophysics</span>
-          <span class="pub-year">2022</span>
-        </div>
-        <div class="pub-links">
-          <a class="plink" href="https://doi.org/10.1016/j.jappgeo.2022.104797" target="_blank" rel="noopener">DOI</a>
-        </div>
+        <div class="exp-title">Postgraduation — Applied Statistics (2 years)</div>
+        <div class="exp-inst">Universidade Federal Rural do Rio de Janeiro (UFRRJ) · Brazil</div>
       </div>
+      <div class="exp-year">2022 – 2024</div>
     </div>
+    <ul class="exp-bullets">
+      <li>Probability theory and statistical inference</li>
+      <li>Experimental design and regression modeling</li>
+      <li>Bayesian statistics and hierarchical modeling</li>
+      <li>Statistical analysis of environmental and spatial data</li>
+    </ul>
+  </div>
 
-    <!-- 05 -->
-    <div class="pub-item">
-      <div class="pub-cover">
-        <img src="covers/cover_05_soilsystems.png" alt="Soil Systems 2020 cover">
-      </div>
+  <div class="exp-block">
+    <div class="exp-header">
       <div>
-        <div class="pub-num">05</div>
-        <div class="pub-title">Soil ECa mapping by electromagnetic induction in a tropical watershed to support precision agriculture</div>
-        <div class="pub-authors"><strong>Rodrigues H</strong> et al.</div>
-        <div class="pub-meta">
-          <span class="pub-journal">Soil Systems · 4(3):56</span>
-          <span class="pub-year">2020</span>
-        </div>
-        <div class="pub-links">
-          <a class="plink" href="https://doi.org/10.3390/soilsystems4030056" target="_blank" rel="noopener">DOI</a>
-        </div>
+        <div class="exp-title">BSc — Geography</div>
+        <div class="exp-inst">Universidade Federal Fluminense (UFF) · Brazil</div>
+      </div>
+      <div class="exp-year">2011 – 2016</div>
+    </div>
+    <ul class="exp-bullets">
+      <li>Experimental erosion plots: rainfall–runoff monitoring and soil loss quantification</li>
+      <li>Soil porosity and pore-network characterization</li>
+      <li>Field-based soil physical analysis and hydrological response assessment</li>
+    </ul>
+  </div>
+
+</section>
+
+
+<!-- ══ CONTACT ══ -->
+<section class="section" id="contact">
+  <div class="section-title">Contact</div>
+  <div class="contact-grid">
+
+    <!-- Affiliation -->
+    <div class="contact-card affil">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="cc-info">
+        <span class="cc-label">Affiliation</span>
+        <span class="cc-val">Pedometrics, Landscape Analysis &amp; GIS Lab · University of Florida, Gainesville, FL · USA</span>
       </div>
     </div>
 
-    <div style="margin-top:1.1rem">
-      <a class="plink" href="https://scholar.google.com/citations?user=vu-Ka7wAAAAJ&hl=en"
-         target="_blank" rel="noopener" style="font-size:12px;">
-        → Full list on Google Scholar
-      </a>
-    </div>
-
-  </section>
-
-  <!-- ── EDUCATION ── -->
-  <section class="section" id="education">
-    <div class="section-title">Education</div>
-
-    <div class="edu-item">
-      <div>
-        <div class="edu-degree">PhD — Soil Science / Pedometrics</div>
-        <div class="edu-inst">Universidade Federal Rural do Rio de Janeiro (UFRRJ) · Brazil</div>
+    <!-- Email -->
+    <a class="contact-card" href="mailto:rodrigues.h@ufl.edu">
+      <div class="cc-icon" style="background:#ea4335;border-radius:6px;">
+        <svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px;">
+          <rect x="2" y="4" width="20" height="16" rx="2" fill="#ea4335"/>
+          <path d="M2 6l10 7 10-7" stroke="#fff" stroke-width="1.5" fill="none"/>
+        </svg>
       </div>
-      <div class="edu-year">2025</div>
-    </div>
-
-    <div class="edu-item">
-      <div>
-        <div class="edu-degree">MSc — Applied Statistics</div>
-        <div class="edu-inst">Universidade Federal Rural do Rio de Janeiro (UFRRJ) · Brazil</div>
+      <div class="cc-info">
+        <span class="cc-label">Email</span>
+        <span class="cc-val">rodrigues.h@ufl.edu</span>
       </div>
-      <div class="edu-year">2022–2024</div>
-    </div>
+    </a>
 
-    <div class="edu-item">
-      <div>
-        <div class="edu-degree">MSc — Soil Science</div>
-        <div class="edu-inst">Universidade Federal Rural do Rio de Janeiro (UFRRJ) · Brazil</div>
+    <!-- ORCID -->
+    <a class="contact-card" href="https://orcid.org/0000-0002-8070-8126" target="_blank" rel="noopener">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24"><path fill="#A6CE39" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0z"/><path fill="#fff" d="M7.369 4.378a.946.946 0 1 1 0 1.892.946.946 0 0 1 0-1.892zM6.647 7.416h1.444V17.46H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.334-1.563 3.334-3.722s-1.1-3.722-3.431-3.722h-2.2z"/></svg>
       </div>
-      <div class="edu-year">2018–2020</div>
-    </div>
-
-    <div class="edu-item">
-      <div>
-        <div class="edu-degree">BSc — Geography</div>
-        <div class="edu-inst">Universidade Federal Fluminense (UFF) · Brazil</div>
+      <div class="cc-info">
+        <span class="cc-label">ORCID</span>
+        <span class="cc-val">0000-0002-8070-8126</span>
       </div>
-      <div class="edu-year">2011–2016</div>
-    </div>
+    </a>
 
-  </section>
+    <!-- Google Scholar -->
+    <a class="contact-card" href="https://scholar.google.com/citations?user=vu-Ka7wAAAAJ&hl=en" target="_blank" rel="noopener">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+      </div>
+      <div class="cc-info">
+        <span class="cc-label">Google Scholar</span>
+        <span class="cc-val">Hugo Rodrigues</span>
+      </div>
+    </a>
 
-  <!-- ── CONTACT ── -->
-  <section class="section" id="contact">
-    <div class="section-title">Contact</div>
-    <div class="contact-grid">
-      <span class="clabel">EMAIL</span>
-      <span class="cval"><a href="mailto:rodrigues.h@ufl.edu">rodrigues.h@ufl.edu</a></span>
+    <!-- ResearchGate -->
+    <a class="contact-card" href="https://www.researchgate.net/profile/Hugo-Rodrigues-12" target="_blank" rel="noopener">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24"><path fill="#00CCBB" d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.485 12.485 0 0 0-.32 2.211 12.493 12.493 0 0 0-.032.921A6.06 6.06 0 0 1 15 7.16l-1.36 1.35C12.388 9.763 11.43 11 11.43 12.5c0 1.501.96 2.737 2.212 3.988A5.998 5.998 0 0 1 15 18.146v.316c0 .727-.115 1.374-.346 1.934-.232.56-.55.993-.952 1.298-.402.305-.858.458-1.368.458h-.218c-.368 0-.689-.098-.96-.295-.27-.197-.487-.505-.65-.923a3.93 3.93 0 0 1-.242-1.407c0-.66.137-1.237.412-1.724.274-.488.644-.858 1.11-1.112l.018-.009L10.77 15.4l-.017.01c-.7.403-1.25 1.006-1.648 1.81a6.17 6.17 0 0 0-.595 2.728c0 .97.196 1.845.588 2.621.392.776.953 1.39 1.683 1.84.73.452 1.598.678 2.602.678 1.053 0 1.968-.264 2.744-.79.776-.527 1.376-1.283 1.797-2.267.42-.985.63-2.148.63-3.49v-.19c0-.87.22-1.658.665-2.362l3.76-5.894H19.71l-2.258 3.588c-.148-.38-.315-.764-.503-1.15a17.81 17.81 0 0 0-.688-1.24l2.258-3.588h1.282l.042-.067a9.028 9.028 0 0 0 1.022-4.08C20.866 2.08 20.404.001 19.586 0zm-5.327 14.006c-.38-.386-.717-.771-1.011-1.153a5.48 5.48 0 0 1-.705-1.354 4.23 4.23 0 0 1-.238-1.405v-.064c.008-.495.114-.932.316-1.31.2-.377.47-.667.807-.87.337-.2.712-.3 1.124-.3.41 0 .79.1 1.133.298.34.2.61.49.808.867.197.377.295.815.295 1.311 0 .5-.098.937-.295 1.311a2.19 2.19 0 0 1-.807.867c-.343.2-.72.298-1.133.298h-.028a2.17 2.17 0 0 1-.266-.496z"/></svg>
+      </div>
+      <div class="cc-info">
+        <span class="cc-label">ResearchGate</span>
+        <span class="cc-val">Hugo Rodrigues</span>
+      </div>
+    </a>
 
-      <span class="clabel">AFFIL.</span>
-      <span class="cval">
-        Pedometrics, Landscape Analysis &amp; GIS Lab<br>
-        University of Florida, Gainesville, FL · USA
-      </span>
+    <!-- GitHub -->
+    <a class="contact-card" href="https://github.com/HugoMachadoRodrigues" target="_blank" rel="noopener">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </div>
+      <div class="cc-info">
+        <span class="cc-label">GitHub</span>
+        <span class="cc-val">HugoMachadoRodrigues</span>
+      </div>
+    </a>
 
-      <span class="clabel">ORCID</span>
-      <span class="cval"><a href="https://orcid.org/0000-0002-8070-8126" target="_blank" rel="noopener">0000-0002-8070-8126</a></span>
+    <!-- Twitter / X -->
+    <a class="contact-card" href="https://x.com/Hugo_MRodrigues" target="_blank" rel="noopener">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </div>
+      <div class="cc-info">
+        <span class="cc-label">Twitter / X</span>
+        <span class="cc-val">@Hugo_MRodrigues</span>
+      </div>
+    </a>
 
-      <span class="clabel">GITHUB</span>
-      <span class="cval"><a href="https://github.com/HugoMachadoRodrigues" target="_blank" rel="noopener">HugoMachadoRodrigues</a></span>
+    <!-- Publons -->
+    <a class="contact-card" href="https://publons.com/researcher/1443505/hugo-machado-rodrigues/" target="_blank" rel="noopener">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#336699"/><path fill="#fff" d="M4.5 6h3.1L9.8 15l2.3-9h2.3l2.3 9 2.2-9H22l-3.3 12h-2.8l-2.1-8.2L11.7 18H8.9z"/></svg>
+      </div>
+      <div class="cc-info">
+        <span class="cc-label">Publons</span>
+        <span class="cc-val">Hugo Machado Rodrigues</span>
+      </div>
+    </a>
 
-      <span class="clabel">SCHOLAR</span>
-      <span class="cval"><a href="https://scholar.google.com/citations?user=vu-Ka7wAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></span>
-
-      <span class="clabel">TWITTER</span>
-      <span class="cval"><a href="https://x.com/Hugo_MRodrigues" target="_blank" rel="noopener">@Hugo_MRodrigues</a></span>
-
-      <span class="clabel">RGATE</span>
-      <span class="cval"><a href="https://www.researchgate.net/profile/Hugo-Rodrigues-12" target="_blank" rel="noopener">ResearchGate</a></span>
-
-      <span class="clabel">PUBLONS</span>
-      <span class="cval"><a href="https://publons.com/researcher/1443505/hugo-machado-rodrigues/" target="_blank" rel="noopener">Publons profile</a></span>
-    </div>
-  </section>
+  </div>
+</section>
 
 </div><!-- /page-wrap -->
 
 <footer>
   &copy; 2025–2026 Hugo Rodrigues &nbsp;·&nbsp;
-  Postdoctoral Associate, University of Florida &nbsp;·&nbsp; Gainesville, FL · USA
+  Postdoctoral Researcher, University of Florida &nbsp;·&nbsp; Gainesville, FL · USA
 </footer>
+
+<script>
+function copyBib(btn) {
+  const bib = btn.getAttribute('data-bib');
+  navigator.clipboard.writeText(bib).then(function() {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.style.borderColor = 'var(--accent2)';
+    btn.style.color = 'var(--accent)';
+    setTimeout(function() {
+      btn.textContent = orig;
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 1800);
+  });
+}
+</script>
 
 </body>
 </html>
