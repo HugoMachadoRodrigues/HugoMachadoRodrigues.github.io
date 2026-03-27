@@ -91,6 +91,24 @@
     gap: 2.5rem;
   }
 
+  .profile-hex-wrap {
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-hex-wrap picture,
+  .profile-hex-wrap img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,.10));
+    display: block;
+  }
+
   .profile-photo-wrap {
     width: 130px;
     height: 130px;
@@ -119,8 +137,7 @@
   .profile-badge {
     width: 38px;
     height: auto;
-    display: block;
-    filter: drop-shadow(0 1px 3px rgba(0,0,0,.12));
+    display: none;
   }
 
   .profile-name {
@@ -560,6 +577,8 @@
   @media (max-width: 600px) {
     .profile-row { flex-direction: column; gap: 1.2rem; }
     .profile-photo-wrap { width: 90px; height: 90px; }
+    .profile-hex-wrap { width: 90px; height: 90px; }
+    .profile-hex-wrap picture, .profile-hex-wrap img { width: 90px; height: 90px; }
     .profile-name { font-size: 1.5rem; }
     .pkg-grid { grid-template-columns: 1fr; }
     .pub-item { grid-template-columns: 70px 1fr; gap: 14px; }
@@ -602,10 +621,6 @@
     <div class="profile-info">
       <div class="profile-top">
         <h1 class="profile-name">Hugo Rodrigues</h1>
-        <picture>
-          <source srcset="Logos/Dark.png" media="(prefers-color-scheme: dark)">
-          <img src="Logos/Light.png" alt="HR hex logo" class="profile-badge">
-        </picture>
       </div>
       <div class="profile-role">Postdoctoral Researcher</div>
       <div class="profile-inst">University of Florida – UF/IFAS</div>
@@ -648,6 +663,12 @@
         </a>
 
       </div>
+    </div>
+    <div class="profile-hex-wrap">
+      <picture>
+        <source srcset="Logos/Dark.png" media="(prefers-color-scheme: dark)">
+        <img src="Logos/Light.png" alt="HR hex logo">
+      </picture>
     </div>
   </div>
 </header>
